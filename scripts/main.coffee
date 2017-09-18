@@ -2,7 +2,7 @@ classes = [
   [1, 2, 3, 5, 5, 5, 8, 7], #A
   [2, 3, 4, 6, 6, 6, 7, 8], #B
   [3, 4, 1, 7, 7, 7, 6, 5], #C
-  [5, 6, 7, 8, 8, 8, 5, 6]  #D
+  [4, 1, 2, 8, 8, 8, 5, 6]  #D
 ]
 
 rooms = [
@@ -14,6 +14,35 @@ rooms = [
   "2001", #6
   "3038", #7
   "2058"  #8
+]
+
+dayLetters = [
+  "A",
+  "B",
+  "C",
+  "D"
+]
+
+names = [
+  "Free",
+  "AP Government",
+  "Choir",
+  "Mandarin",
+  "AP Physics C",
+  "AP English Language",
+  "Contemporary World Studies",
+  "Latin"
+]
+
+colors = [
+  '#a4c2f4',
+  '#a2c4c9',
+  '#f9cb9c',
+  '#b4a7d6',
+  '#ea9999',
+  '#ffe599',
+  '#b6d7a8',
+  '#c27ba0'
 ]
 
 startTimes = [
@@ -40,22 +69,39 @@ endTimes = [
 
 cell =
   (letter, period) ->
-    (index, html) ->
-      perNum = classes[letter][period]
-      "<div class=\"period\">
-        <div class=\"top\">
-          <span class=\"time\">#{startTimes[period]} - #{endTimes[period]}</span>
-          <span class=\"room\">#{rooms[perNum-1]}</span>
-        </div>
-        <h2 class=\"text-center\">#{perNum}</h2>
-      </div>"
+    perNum = classes[letter][period]
+    "<div class=\"period Box-row\" style=\"background-color:#{colors[perNum-1]}\">
+      <div class=\"top\">
+        <span class=\"time\">#{startTimes[period]} - #{endTimes[period]}</span>
+        <span class=\"room\">#{rooms[perNum-1]}</span>
+      </div>
+      <h2 class=\"text-center\">#{perNum}</h2>
+      <div class=\"className\">#{names[perNum-1]}</div>
+    </div>
+    "
 
+head =
+  (letter) ->
+    "<div class=\"Box\">
+      <div class=\"Box-header\">
+        <h1 class=\"text-center\">#{dayLetters[letter]}</h1>
+      </div>
+      "
 
+foot =
+  () ->
+    "</div>"
+
+dayContents =
+  (letter) ->
+    result = head(letter)
+    result += cell(letter, period) for period in [0..7]
+    result += foot()
 
 main = () ->
   day = $( "div.day" ).first()
   for letter in [0..3]
-    day.append(cell(letter, period)) for period in [0..7]
+    day.append(dayContents(letter))
     day = day.next()
 
 $(document).ready(main)
