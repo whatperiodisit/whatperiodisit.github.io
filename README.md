@@ -1,2 +1,2 @@
-# Staples Schedule Maker!
-Nobody's made one of these yet, so I made one.
+# What period is it?
+This is a webapp for the new Staples High School schedule.
