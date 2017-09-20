@@ -1,45 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Staples Schedule</title>
-    <script src="./scripts/jquery.min.js" charset="utf-8"></script>
-    <script src="./scripts/tv.js" charset="utf-8"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-    <link rel="stylesheet" href="./css/tv.min.css">
-  </head>
-  <body>
-    <div class="container">
+
+<head>
+  <meta charset="utf-8">
+  <title>Staples Schedule</title>
+  <script src="./scripts/jquery.min.js" charset="utf-8"></script>
+  <script src="./scripts/moment.min.js" charset="utf-8"></script>
+  <script src="./scripts/days.js" charset="utf-8"></script>
+  <script src="./scripts/tv.js" charset="utf-8"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+  <link rel="stylesheet" href="./css/tv.min.css">
+</head>
+
+<body>
+  <div class="container">
     <h1 class="today-is text-center">Today is Monday, September 18.</h1>
-    <div class="columns">
-    <div class="one-fifth column text-center per-nums">
-      <h2 class="top">4</h2>
-      <h2>1</h2>
-      <h2 class="now blue">2</h2>
-      <h2>8.1</h2>
-      <h2>8.2</h2>
-      <h2>8.3</h2>
-      <h2>6</h2>
-      <h2>5</h2>
+    <h1 class="no-school text-center">No School!</h1>
+    <div class="columns info">
+      <div class="one-fifth column text-center per-nums">
+        <h2>4</h2>
+        <h2>1</h2>
+        <h2 class="now blue">2</h2>
+        <h2>8.1</h2>
+        <h2>8.2</h2>
+        <h2>8.3</h2>
+        <h2>6</h2>
+        <h2>5</h2>
+      </div>
+      <div class="four-fifths column text-center">
+        <div class="columns its-day">
+          <div class="one-third column">
+            <h2 class="letter-before">It's an </h2></div>
+          <div class="one-third column">
+            <h2 class="letter blue">A</h2></div>
+          <div class="one-third column">
+            <h2 class="letter-after">day.</h2></div>
+        </div>
+        <h2 class="time-exp">The time is:</h2>
+        <h1 class="big-time" id="clock">11:18 AM</h1>
+        <div class="columns">
+          <div class="one-half column">
+            <h2 class="time-exp">Elapsed:</h2>
+            <h1 class="big-time" id="elapsed">02:38</h1>
+          </div>
+          <div class="one-half column">
+            <h2 class="time-exp">Remaining:</h2>
+            <h1 class="big-time" id="remaining">47:22</h1>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="four-fifths column text-center">
-      <div class="columns">
-      <div class="one-third column"><h2 class="letter-before">It's an </h2></div>
-      <div class="one-third column"><h2 class="letter blue">A</h2></div>
-      <div class="one-third column"><h2 class="letter-after">day.</h2></div>
-      </div>
-      <h2 class="time-exp">The time is:</h2>
-      <h1 class="big-time" id="clock">11:18 AM</h1>
-      <div class="columns">
-        <div class="one-half column">
-          <h2 class="time-exp">Elapsed:</h2>
-          <h1 class="big-time" id="elapsed">02:38</h1>
-        </div>
-        <div class="one-half column">
-          <h2 class="time-exp">Remaining:</h2>
-          <h1 class="big-time" id="remaining">47:22</h1>
-        </div>
-      </div>
-    </div></div></div>
-  </body>
+    <h2 class="text-center bottom">Online at whatperiodisit.github.io</h2>
+  </div>
+</body>
+
 </html>
