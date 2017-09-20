@@ -41,9 +41,9 @@ nowBtw = (start, end) ->
 
 period = () -> ## Return [period (ordinal), time elapsed, time remaining]
   if nowBtw('00:00', times[0][0]) != false
-    return [null, "START", nowBtw('00:00', times[0][0])[1]]
+    return [false, "START", nowBtw('00:00', times[0][0])[1]]
   else if nowBtw(times[times.length-1][1], '23:59:59') != false
-    return [null, nowBtw(times[times.length-1][1], '23:59:59')[0], 'END']
+    return [false, nowBtw(times[times.length-1][1], '23:59:59')[0], 'END']
   else
     for i in [0...times.length]
       if nowBtw(times[i][0], times[i][1]) != false
@@ -60,9 +60,10 @@ main = () ->
   per = period()
   $("#elapsed").text(per[1])
   $("#remaining").text(per[2])
-  $(".per-nums h2").removeClass()
-    .eq(per[0])
-    .addClass("now " + color)
+  if per[0] != false
+    $(".per-nums h2").removeClass()
+      .eq(per[0])
+      .addClass("now " + color)
 
 prep = () ->
   setToday()

@@ -50,9 +50,9 @@ nowBtw = function(start, end) {
 period = function() {
   var i, j, ref;
   if (nowBtw('00:00', times[0][0]) !== false) {
-    return [null, "START", nowBtw('00:00', times[0][0])[1]];
+    return [false, "START", nowBtw('00:00', times[0][0])[1]];
   } else if (nowBtw(times[times.length - 1][1], '23:59:59') !== false) {
-    return [null, nowBtw(times[times.length - 1][1], '23:59:59')[0], 'END'];
+    return [false, nowBtw(times[times.length - 1][1], '23:59:59')[0], 'END'];
   } else {
     for (i = j = 0, ref = times.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
       if (nowBtw(times[i][0], times[i][1]) !== false) {
@@ -77,7 +77,9 @@ main = function() {
   per = period();
   $("#elapsed").text(per[1]);
   $("#remaining").text(per[2]);
-  return $(".per-nums h2").removeClass().eq(per[0]).addClass("now " + color);
+  if (per[0] !== false) {
+    return $(".per-nums h2").removeClass().eq(per[0]).addClass("now " + color);
+  }
 };
 
 prep = function() {
